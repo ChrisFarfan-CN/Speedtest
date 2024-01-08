@@ -1,7 +1,8 @@
-# pip install speedtest-cli
+# pip install speedtest-cli pandas
 import speedtest, datetime
+import pandas as pd
 
-duration = 330 # seconds
+duration = 300 # seconds
 results = []
 
 st = speedtest.Speedtest()
@@ -14,8 +15,9 @@ while datetime.datetime.now() <= target_time:
     up = st.upload()
     results.append({"time":datetime.datetime.now(),"down":down,"up":up})
 
-for result in results:
-    print(result)
+df = pd.DataFrame(results)
+print(df.to_string())
+df.to_excel("results.xlsx")
 
 # st.upload(threads=threads,pre_allocate=False)
 # st.results.share()
