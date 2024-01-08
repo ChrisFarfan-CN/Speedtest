@@ -18,8 +18,3 @@ while datetime.datetime.now() <= target_time:
 df = pd.DataFrame(results)
 print(df.to_string())
 df.to_excel("results.xlsx")
-
-# st.upload(threads=threads,pre_allocate=False)
-# st.results.share()
-
-# results_dict = st.results.dict()
