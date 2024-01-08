@@ -1,17 +1,22 @@
 # pip install speedtest-cli
-from concurrent.futures import thread
-import speedtest
+import speedtest, datetime
 
-servers = []
-threads = None # `None` will 
-num_of_tests = 5
-time_between_tests = 60 # seconds
+duration = 330 # seconds
+results = []
 
 st = speedtest.Speedtest()
-st.get_servers(servers)
-st.get_best_server()
 
-st.download(threads=threads)
+time_now = datetime.datetime.now()
+target_time = time_now + datetime.timedelta(0,duration)
+
+while datetime.datetime.now() <= target_time:
+    down = st.download()
+    up = st.upload()
+    results.append({"time":datetime.datetime.now(),"down":down,"up":up})
+
+for result in results:
+    print(result)
+
 # st.upload(threads=threads,pre_allocate=False)
 # st.results.share()
 
