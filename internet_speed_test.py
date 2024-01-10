@@ -15,9 +15,10 @@ target_time = time_now + datetime.timedelta(0,duration) # Calculate the time we 
 
 print("Starting tests:")
 while time_now <= target_time: # While we still have time to run:
-    print(f"> Estimate: {(time_now - target_time).seconds} seconds left\n> Download test started...")
+    print(f"> Estimate: {(target_time - time_now).seconds} seconds left\n> Download test started...")
     down = st.download() # Do the download test.
-    print(f"> Estimate: {(time_now - target_time).seconds} seconds left\n> Upload test started...")
+    time_now = datetime.datetime.now() # Check the time.
+    print(f"> Estimate: {(target_time - time_now).seconds} seconds left\n> Upload test started...")
     up = st.upload() # Do the upload test.
     df.loc[len(df.index)] = [
         ((datetime.datetime.now()).strftime("%Y/%m/%d %H:%M")),
