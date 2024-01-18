@@ -24,7 +24,7 @@ while time_now <= target_time: # While we still have time to run:
     up = st.upload()/1000000 # Do the upload test.
     print(f"> Upload = {(up):.3g} Mb/s")
     df.loc[len(df.index)] = [
-        ((datetime.datetime.now()).strftime("%Y/%m/%d %H:%M")),
+        ((datetime.datetime.now()).strftime("%Y/%m/%d %H:%M:%S")),
         down,
         up
     ] # Create a new entry containing the time and results.
