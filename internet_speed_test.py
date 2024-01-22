@@ -2,7 +2,6 @@
 # pip install pandas
 # pip install openpyxl
 
-from distutils.command import upload
 import speedtest, datetime # import `speedtest` and `datetime`.
 import pandas as pd # import `pandas` as `pd` for dataframes and `to_excel()`.
 
